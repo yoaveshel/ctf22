@@ -1,12 +1,12 @@
 # Fdb version 3
-["biber main"] 1668519481 "main.bcf" "main.bbl" "main" 1668519956
-  "main.bcf" 1668519955 106985 c3146e9450de16249746226bc1075905 "pdflatex"
+["biber main"] 1668519481 "main.bcf" "main.bbl" "main" 1668521417
+  "main.bcf" 1668521416 106985 c3146e9450de16249746226bc1075905 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1668519952 "/home/yoaveshel/Dropbox/Studies/Math/Year 4/Semester 1/Category Theory/Solutions/main.tex" "main.pdf" "main" 1668519956
+["pdflatex"] 1668521414 "/home/yoaveshel/Dropbox/Studies/Math/Year 4/Semester 1/Category Theory/Solutions/main.tex" "main.pdf" "main" 1668521417
   "/home/yoaveshel/.texlive2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1641899367 2529348 20520c53f609357b8dab91bca913d181 ""
-  "/home/yoaveshel/Dropbox/Studies/Math/Year 4/Semester 1/Category Theory/Solutions/main.tex" 1667317991 512 48ee77f97bf5bfd28b52d9cda848acd0 ""
+  "/home/yoaveshel/Dropbox/Studies/Math/Year 4/Semester 1/Category Theory/Solutions/main.tex" 1668521384 537 1649270ae5c9bbfdaee1b7f8a256381b ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -239,14 +239,15 @@
   "chapter4.tex" 1666027251 5225 d4b973ed834bca2b9628fa8c8d6e22d1 ""
   "chapter5.tex" 1665763210 5515 bc5d5f606d1beac509b0762b5c402229 ""
   "chapter6.tex" 1667317992 24905 56a0b16cebb650dcee195fd5aa2ca08a ""
-  "chapter7.tex" 1668519952 15064 402d51a0b46328b30063c5fe0af17d3a ""
+  "chapter7.tex" 1668521291 15839 e92d197fc31b28575f87f7a1590fb28f ""
+  "chapter8.tex" 1668521410 31 a9038fd78a5fe319480fa6a10f30bb96 ""
   "letterstyles.sty" 1667310651 6560 8e3f813fc8bd0f2488d5a32ff24cb6a2 ""
-  "main.aux" 1668519955 6705 58e1cd1b451e7cb3bd0c5155a29ee8c9 "pdflatex"
+  "main.aux" 1668521416 6993 c7f1c4f9759c2cf6f97cb8a5991bbc4c "pdflatex"
   "main.bbl" 1668519481 466 ee04f40f768daeed26442158e95aba61 "biber main"
-  "main.out" 1668519955 4525 1fd3a0c28825f9cfdbd393958212a3bc "pdflatex"
-  "main.run.xml" 1668519955 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1667317991 512 48ee77f97bf5bfd28b52d9cda848acd0 ""
-  "main.toc" 1668519955 2344 635e9c9ae0a29c75c70f8d504ea28edc "pdflatex"
+  "main.out" 1668521416 4799 93419dee3ce8e30f2ebbc5046f8de2de "pdflatex"
+  "main.run.xml" 1668521416 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1668521384 537 1649270ae5c9bbfdaee1b7f8a256381b ""
+  "main.toc" 1668521416 2483 6c6b4af59a286fcbd04ee9b010a649d4 "pdflatex"
   "preamble.sty" 1668518102 3883 edede6e39c3610b32385561da99be98b ""
   (generated)
   "main.aux"

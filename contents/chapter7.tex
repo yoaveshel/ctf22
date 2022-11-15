@@ -225,3 +225,18 @@
         We need to define functors $F\colon\For\to\presheaf\Nbb$ and $G\colon\presheaf\Nbb\to\For$ such that $FG=\id_{\presheaf\Nbb}$ and $GF=\id_{\For}$.
     \end{proof}
 \end{solution}
+
+\begin{exercise}{59}
+    Prove that $y\colon\Ccal\to\presheaf{\Ccal}$ preserves all limits which exist in $\Ccal$. 
+    Prove also that if $\Ccal$ is cartesian closed, $y$ preserves exponents.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        The first claim is proved in Proposition \ref{prop:rep-lim}. 
+        For the second claim, we want to prove that $y(Y^X)\cong (yY)^{yX}$.
+        Well, using the Yoneda lemma and the fact the $y$ preserves products we have
+        \begin{multline*}
+            y(Y^X)(C)=\Ccal(C, Y^X)\cong\Ccal(C\times X, Y)=yY(C\times X)\cong\presheaf{\Ccal}(y(C\times X), yY)\\\cong\presheaf{\Ccal}(yC\times yX, yY)\cong\presheaf{\Ccal}\left(yC,(yY)^{yX}\right)\cong (yY)^{yX}(C).
+        \end{multline*}
+    \end{proof}
+\end{solution}

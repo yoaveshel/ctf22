@@ -11,7 +11,7 @@
 \contentsline {subsection}{Exercise 26}{4}{subsection*.6}%
 \contentsline {subsection}{Exercise 27}{4}{subsection*.7}%
 \contentsline {subsection}{Exercise 28}{4}{subsection*.8}%
-\contentsline {subsection}{Exercise 29}{4}{subsection*.9}%
+\contentsline {subsection}{Exercise 29}{5}{subsection*.9}%
 \contentsline {subsection}{Exercise 30}{5}{subsection*.10}%
 \contentsline {section}{\numberline {5}Complete Categories}{5}{section.5}%
 \contentsline {subsection}{Exercise 42}{5}{subsection*.11}%
@@ -35,4 +35,6 @@
 \contentsline {subsection}{Exercise 57}{17}{subsection*.27}%
 \contentsline {subsection}{Exercise 58}{19}{subsection*.28}%
 \contentsline {subsection}{Exercise 8.3}{20}{subsection*.29}%
+\contentsline {subsection}{Exercise 59}{21}{subsection*.30}%
+\contentsline {section}{\numberline {8}Presheaves as a Topos}{21}{section.8}%
 \contentsfinish 

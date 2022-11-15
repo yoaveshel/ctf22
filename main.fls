@@ -1180,6 +1180,10 @@ INPUT ./chapter7.tex
 INPUT chapter7.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT ./chapter8.tex
+INPUT chapter8.tex
+INPUT ./chapter8.tex
+INPUT chapter8.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
