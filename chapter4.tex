@@ -1,0 +1,151 @@
+\section{Limits and Colimits}
+
+\begin{exercise}{21}
+    Show that a full and faithful functor reflects the property of being a terminal (initial object).
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Let $F\colon\Ccal\to\Dcal$ be a fully faithful functor, and $X\in\ob\Ccal$ such that $FX$ is the terminal object of $\Dcal$.
+        Then for any $Y\in\Ccal$ we have $\{*\}\cong\Hom_{\Dcal}(FY, FX)\cong\Hom_{\Ccal}(Y, X)$ so $X$ is terminal in $\Ccal$. 
+        We Similarly show that $F$ reflects the property of being initial.
+    \end{proof}
+\end{solution}
+
+
+\begin{exercise}{22}
+    Show that every equalizer is monic.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Let $e\colon E\to X$ be the equalizer of $f_1,f_2\colon X\rightrightarrows Y$, and take $g_1,g_2\colon T\to E$ such that $eg_1=eg_2$. 
+        Since both $g_1$ and $g_2$ make
+        \begin{tikzcd}
+            E \arrow[r, "e"]                                   & X \arrow[r, "f_1", shift left] \arrow[r, "f_2"', shift right] & Y \\
+            T \arrow[ru, "eg_1=eg_2"'] \arrow[u, "", dashed] &                                                               &  
+        \end{tikzcd}
+        commute, by uniqueness it follows that $g_1=g_2$, so $e$ is monic.
+    \end{proof}
+\end{solution}
+
+
+\begin{exercise}{23}
+    Let
+    \begin{tikzcd}
+        E \arrow[r, "e"] & X \arrow[r, "f_1", shift left] \arrow[r, "f_2"', shift right] & Y
+    \end{tikzcd}
+    be an equalizer diagram. Show that $e$ is iso if and only if $f_1=f_2$.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        $(\Rightarrow)$ Immediate, since
+        \[ f_1=f_1\id_X= f_1e\inverse e=f_2 e\inverse e = f_2\id_X=f_2.  \]
+
+        $(\Leftarrow)$ If $f_1=f_2$ then the there exists a unique $k\colon X\to E$ such that $ek=\id_X$.
+        Then $eke=e\id_E$ and since $e$ is monic by the previous exercise it follows that $ke=1_E$, so $e$ is an isomorphism.
+
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{24}
+    Show that in $\Set$, every monomorphism fits into an equalizer diagram.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Let $f:X\to Y$ be a monomorphism in $\Set$. Define $g_1,g_2\colon Y\rightrightarrows\{0,1\}$ by $g_1(y)=1$ and
+        \[ g_2(y)=\begin{cases}
+            1,&y\in\im f\\
+            0,&\text{otherwise}
+        \end{cases}. \]
+        It is clear that $g_2f=g_1f$. Let $h\colon T\to Y$ be any map such that $g_1h=g_2h$.
+        It follows that $\im h\subseteq\im f$ and so we can define $k\colon T\to X$ by $k(t)=f^{-1}h(t)$.
+        Then $fk=h$ and $k$ is unique, so $f$ is the equalizer of $g_1,g_2\colon Y\rightrightarrows\{0,1\}$.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{25}
+    Let 
+    \begin{tikzcd}
+        A \arrow[d, "a"] \arrow[r, "b"] & B \arrow[d, "f"] \\
+        X \arrow[r, "g"]                & Y               
+    \end{tikzcd}
+    be a pullback diagram with $f$ monic.
+    Show that $a$ is also monic.
+    Also, if $f$ is iso, so is $a$.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Let $t_1,t_2\colon T\rightrightarrows A$ such that $at_1=at_2$.
+        Then $fbt_1=gat_1=gat_2=fbt_2$ and since $f$ is monic, $bt_1=bt_2$. 
+        Hence, there exists a unique $k\colon T\to A$ such that
+        \begin{center}
+            \begin{tikzcd}
+                T \arrow[rdd, "at_1=at_2"', bend right] \arrow[rrd, "bt_1=bt_2", bend left] \arrow[rd, "k", dashed] &                                 &                  \\
+                                                                                                                    & A \arrow[d, "a"] \arrow[r, "b"] & B \arrow[d, "f"] \\
+                                                                                                                    & X \arrow[r, "g"]                & Y               
+                \end{tikzcd}
+        \end{center}
+        commute. Since either $k=t_1$ or $k=t_2$ would work, it must be the case that $t_1=t_2$.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{26}
+    Given two commuting squares
+    \begin{center}
+        \begin{tikzcd}
+            A \arrow[d, "a"] \arrow[r, "b"] & B \arrow[d, "f"] \arrow[r, "c"] & C \arrow[d, "d"] \\
+            X \arrow[r, "g"]                & Y \arrow[r, "h"]                & Z               
+        \end{tikzcd}.
+    \end{center}
+    Show that
+    \begin{exercises}
+        \item if both squares are pullback squares, then so is the composite square;
+        \item if the right square and the composite square are pullbacks, then so is the left square.
+    \end{exercises}
+
+\end{exercise}
+\begin{solution}
+    \begin{exercises}
+        \item\begin{proof}
+            
+        \end{proof}
+        \item\begin{proof}
+            
+        \end{proof}
+    \end{exercises}
+\end{solution}
+
+\begin{exercise}{27}
+    
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{28}
+    
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{29}
+    
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{30}
+    
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        
+    \end{proof}
+\end{solution}

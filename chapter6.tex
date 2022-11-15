@@ -1,0 +1,394 @@
+\section{Cartesian Closed Categories}
+
+\begin{exercise}{47}
+    Show that in a ccc, there are natural isomorphisms 
+    \begin{exercises}
+        \item$1^X\cong 1$,
+        \item$(Y\times Z)^X\cong Y^X\times Z^X$,
+        \item$(Y^Z)^X=Y^{Z\times X}$.
+    \end{exercises}
+\end{exercise}
+\begin{solution}
+    Let $\Ccal$ be a ccc category and $X,Y, Z$ and $A$ objects in $\Ccal$. 
+    \begin{exercises}
+        \item\begin{proof}
+        
+        
+            Since $1$ is terminal we have unique morphisms $1\times X\to 1$, $A\times X\to 1$ and $f\colon A\to 1$, so 
+            \begin{tikzcd}
+                1\times X \arrow[r] & 1                                             \\
+                                    & A\times X \arrow[u] \arrow[lu, "{f\times 1_X}"]
+            \end{tikzcd}
+            trivially commutes.
+            Hence, $1^X\cong 1$.
+            Moreover, this isomorphism is natural as a morphism $1^{(-)}\Rightarrow 1$ since all the maps in the square 
+            \begin{tikzcd}
+                1^X \arrow[d] \arrow[r] & 1^Y \arrow[d] \\
+                1 \arrow[r]             & 1            
+            \end{tikzcd}
+            are the identity maps.
+        \end{proof}
+
+        \item\begin{proof}
+            Let $\eta_{(Y,Z)}\colon Y^X\times Z^X\to (Y\times Z)^X$ be the uniqe map which makes
+            \begin{center}
+                \begin{tikzcd}
+                    (Y\times Z)^X\times X \arrow[r, "{\ev{X,Y\times Z}}"] & Y\times Z                                                                    \\
+                                                                          & Y^X\times Z^X\times X \arrow[u, "h"'] \arrow[lu, "{\eta_{(Y,Z)}\times 1_X}"]
+                \end{tikzcd}
+            \end{center}
+            commute, where $h=\left(\ev{X,Y}(\pi_{Y^X}\times 1_X),\ev{X,Z}(\pi_{Z^X}\times 1_X)\right)$.
+            To construct an inverse, let $f_Y\colon (Y\times Z)^X\to Y^X$ be the unique map such that
+            \begin{center}
+                \begin{tikzcd}
+                    Y^X\times X \arrow[r, "{\ev{X,Y}}"] & Y                                                                                            \\
+                                                        & (Y\times Z)^X\times X \arrow[u, "{\pi_Y\ev{X,Y\times Z}}"'] \arrow[lu, "f_Y\times 1_X"]
+                \end{tikzcd}
+            \end{center}
+            commutes. Analogously, we define $f_Z\colon(Y\times Z)^X\to Z^X$. 
+            We claim that  $\mu_{(Y,Z)}=(f_Y, f_Z)\colon (Y\times Z)^X\to Y^X\times Z^X$ is the inverse of $\eta_{(Y,Z)}$.
+            Since
+            \begin{center}
+                \begin{tikzcd}
+                    & (Y\times Z)^X\times X \arrow[d, "{\mu_{(Y,Z)}\times 1_X}" description] \arrow[ld, "f_Y\times 1_X"'] \arrow[rd, "f_Z\times 1_X"] &                                     \\
+                    Y^X\times X \arrow[d, "{\ev{X,Y}}"'] & Y^X\times Z^X\times X \arrow[d, "h"] \arrow[r, "\pi_{Z^X}\times 1_X"'] \arrow[l, "\pi_{Y^X}\times 1_X"]                         & Z^X\times X \arrow[d, "{\ev{X,Z}}"] \\
+                    Y                                    & Y\times Z \arrow[l, "\pi_Y"] \arrow[r, "\pi_Z"']                                                                                & Z                                  
+                \end{tikzcd}
+            \end{center}
+            commutes, it follows that
+            \begin{align*}
+                h (\mu_{(Y,Z)}\times 1_X)&=(\ev{X,Y}(f_Y\times 1_X), \ev{X, Z}(f_Z\times 1_X))\\
+                &=(\pi_Y\ev{X,Y\times Z}, \pi_Z\ev{X,Y\times Z})\\
+                &=\ev{X,Y\times Z}
+            \end{align*}
+            and so 
+            \begin{center}
+                \begin{tikzcd}
+                    (Y\times Z)^X\times X \arrow[rr, "{\ev{X,Y\times Z}}"] &                                                                              & Y\times Z                                                                                     \\
+                                                                           & Y^X\times Z^X\times X \arrow[lu, "{\eta_{(Y,Z)}\times 1_X}"] \arrow[ru, "h"] &                                                                                               \\
+                                                                           &                                                                              & (Y\times Z)^X\times X \arrow[uu, "{\ev{X,Y\times Z}}"'] \arrow[lu, "{\mu_{(Y,Z)}\times 1_X}"]
+                \end{tikzcd}
+            \end{center}
+            commutes (the top left triangle commutes by definition of $\eta_{(Y,Z)}$ and we've just show that the bottom right triangle commute, so the big triangle commutes as well). 
+            By uniqueness, $\eta_{(Y,Z)}\mu_{(Y,Z)}=\id_{(Y\times Z)^X}$. 
+            By definition of $f_Y$ and $\eta_{(Y,Z)}$,
+            \begin{center}
+                \begin{tikzcd}
+                    Y^X\times X \arrow[rr, "{\ev{X,Y}}"] &                                                                                                                                    & Y                                                                                        \\
+                                                         & (Y\times Z)^X\times X \arrow[r, "{\ev{X,Y\times Z}}"] \arrow[lu, "f_Y\times 1_X"'] \arrow[ru, "{\pi_Y\ev{X,Y\times Z}}" description] & Y\times Z \arrow[u, "\pi_Y"']                                                            \\
+                                                         &                                                                                                                                    & Y^X\times Z^X\times X \arrow[u, "h"'] \arrow[lu, "{\eta_{(Y,Z)}\times 1_X}" description]
+                \end{tikzcd}
+            \end{center}
+            commutes and so both $\pi_{Y^X}\times 1_X$ and $(f_Y\eta_{Y,Z})\times 1_X$ make
+            \begin{center}
+                \begin{tikzcd}
+                    Y^X\times X \arrow[r, "{\ev{X,Y}}"] & Y                                                      \\
+                                                        & Y^X\times Z^X\times X \arrow[u, "\pi_Y h"'] \arrow[lu]
+                \end{tikzcd}
+            \end{center}
+            commute, so $f_Y\eta_{(Y,Z)}=\pi_{Y^X}$. Analogously, $f_Z\eta_{(Y,Z)}=\pi_{Z^X}$.
+            Thus,
+            \begin{center}
+                \begin{tikzcd}
+                    & Y^X\times Z^X \arrow[d, "{\eta_{(Y,Z)}}"] \arrow[ldd, "\pi_{Y^X}"', bend right] \arrow[rdd, "\pi_{Z^X}", bend left] &     \\
+                    & (Y\times Z)^X \arrow[d, "{\mu_{(Y,Z)}}"] \arrow[ld, "f_Y"'] \arrow[rd, "f_Z"]                                       &     \\
+                Y^X & Y^X\times Z^X \arrow[l, "\pi_{Y^X}"] \arrow[r, "\pi_{Z^X}"']                                                        & Z^X
+                \end{tikzcd}
+            \end{center}
+            commutes, and by uniqueness it follows that $\mu_{(Y,Z)}\eta_{(Y,Z)}=1_{Y^X\times Z^X}$.
+
+
+            It is left to show that this gives a natural isomorphism $\eta\colon (-)^X\times (-)^X\Rightarrow (-\times -)^X$ of functors $\Ccal\times\Ccal\to\Ccal$.
+            Since a morphism of bifunctors is natural if and only if it is natural in each component and the definitions are symmetric in their components, it suffices to check that
+            \begin{center}
+                \begin{tikzcd}
+                    Y^X\times Z^X \arrow[rr, "f^X\times1_{Z^X}"] \arrow[d, "{\eta_{(Y,Z)}}"] &  & (Y')^X\times Z^X \arrow[d, "{\eta_{(Y',Z)}}"] \\
+                    (Y\times Z)^X \arrow[rr, "(f\times 1_Z)^X"]                              &  & (Y'\times Z)^X                               
+                \end{tikzcd}
+            \end{center}
+            commutes.
+            Since $\ev{X, -}\colon (-)^X\times X\Rightarrow 1_\Ccal$ is a natural transformation, we have that
+            \begin{align*}
+                \ev{X,Y'\times Z}\circ (f\times 1_Z)^X\times 1_X\circ \eta_{Y,Z}\times 1_X&=(f\times 1_Z)\circ\ev{X,Y\times Z}\circ\eta_{(Y,Z)\times 1_X}\\
+                &=(f\times 1_Z) h
+            \end{align*}
+            and
+            \begin{center}
+                \begin{tikzcd}
+                    &  &  & Y^X\times Z^X\times X \arrow[d, "f^X\times 1_{Z^X}\times 1_X" description] \arrow[llldd, "{f\circ\ev{X,Y}(\pi_{Y^X}\times 1_X)}"', bend right] \arrow[rrrdd, "{\ev{X,Z}(\pi_{Z^X}\times 1_X)}", bend left] &  &  &   \\
+                    &  &  & (Y')^X\times Z^X\times X \arrow[llld, "{\ev{X,Y'}(\pi_{(Y')^K}\times 1_X)}" description] \arrow[rrrd, "{\ev{X,Z}(\pi_{Z^X}\times 1_X)}" description] \arrow[d, "h'"]                                       &  &  &   \\
+                 Y' &  &  & Y'\times Z \arrow[lll] \arrow[rrr]                                                                                                                                                                         &  &  & Z
+                 \end{tikzcd}
+            \end{center}
+            commutes, so
+            \begin{align*}
+                &\ev{X,Y'\times Z}\circ \eta_{(Y',Z)}\times 1_X\circ f^X\times 1_{Z^X}\times 1_X=h'\circ f^X\times 1_{Z^X}\times 1_X\\
+                &\qquad=(f\times 1_Z)h.
+            \end{align*}
+            It follows that both $(f\times 1_Z)^X\eta_{(Y,Z)}$ and $\eta_{(Y',Z)}(f^X\times 1_{Z^X})$ make
+            \begin{center}
+                \begin{tikzcd}
+                    (Y'\times Z)^X\times X \arrow[r, "{\ev{X,Y'\times Z}}"] & Y'\times Z                                                                   \\
+                                                                            & Y^X\times Z^X\times X \arrow[lu, "-\times 1_X"] \arrow[u, "(f\times 1_Z)h"']
+                \end{tikzcd}
+            \end{center}
+            commute, and so they are equal.
+        \end{proof}
+        \item\begin{proof}
+            Define $f=\ev{Z, Y}\circ \ev{X,Y^Z}\times 1_Z\colon (Y^Z)^X\times X\times Z\to Y$.
+            Then for any $h\colon A\times X\times Z\to Y$ we get a map $H'\colon A\times X\to Y^Z$ such that $\ev{Z,Y}\circ H'\times 1_Z=h$ which gives a unique map $H\colon A\to (Y^Z)^X$ such that $\ev{X, Y^Z}\circ H\times 1_X=H'$.
+            Since
+            \begin{align*}
+                f\circ H\times 1_{X\times Z}&=\ev{Z, Y}\circ \ev{X,Y^Z}\times 1_Z\circ H\times 1_{X\times Z}\\
+                &=\ev{Z, Y}\circ (\ev{X,Y^Z}\circ H\times 1_X)\times 1_Z\\
+                &=\ev{Z, Y}\circ H'\times 1_Z\\
+                &=h,
+            \end{align*}
+            we conclude that $(Y^Z)^X\cong Y^{Z\times X}$.
+        \end{proof}
+    \end{exercises}
+\end{solution}
+
+\begin{exercise}{48}
+    If a ccc has coproducts, we have
+    \begin{exercises}
+        \item $X\times(Y+Z)\cong(X\times Y)+(X\times Z)$
+        \item $Y^{Z+X}=Y^Z\times Y^X$.
+    \end{exercises}
+\end{exercise}
+\begin{solution}
+   \begin{exercises}
+       \item\begin{proof}
+            Suppose $\Ccal$ is a ccc which has coproducts, and let $X,Y$ and $Z$ be objects in $\Ccal$.
+            Consider any cocone 
+            \begin{center}
+                \begin{tikzcd}
+                    X\times Y \arrow[rd, "\iota_1"'] &   & X\times Z \arrow[ld, "\iota_2"] \\
+                                                            & D &                                          
+                \end{tikzcd}.
+            \end{center}
+            Exponentiating, we get
+            \begin{center}
+                \begin{tikzcd}
+                    X\times Y \arrow[rd, "\iota_1"'] \arrow[r, "\overline{\iota_1}\times 1_X"] & D^X\times X \arrow[d, "{\ev{X,D}}"] & X\times Z \arrow[ld, "\iota_2"] \arrow[l, "\overline{\iota_2}\times 1_X"'] \\
+                                                                                            & D                                   &                                                                           
+                \end{tikzcd}
+            \end{center}
+            where $\overline{\iota_1}$ and $\overline{\iota_2}$ are the transposes of $\iota_1$ and $\iota_2$ respectively.
+            Hence, we have the cocone
+            \begin{center}
+                \begin{tikzcd}
+                    Y \arrow[rd, "\overline{\iota_1}"] &     & Z \arrow[ld, "\overline{\iota_2}"'] \\
+                                                    & D^X &                                    
+                \end{tikzcd}
+            \end{center}
+            and since $Y+Z$ is limiting, we get a unique map $h\colon Y+Z\to D^X$ so that
+            \begin{center}
+                \begin{tikzcd}
+                    Y \arrow[rd, "\overline{\iota_1}"'] \arrow[r, "\iota_Y"] & Y+Z \arrow[d, "h"] & Z \arrow[ld, "\overline{\iota_2}"] \arrow[l, "\iota_Z"'] \\
+                                                                            & D^X                &                                                         
+                \end{tikzcd}
+            \end{center}
+            commutes. Then
+            \begin{center}
+                \begin{tikzcd}
+                    Y\times X \arrow[rd, "\overline{\iota_1}\times 1_X"'] \arrow[r, "\iota_Y\times 1_X"] & (Y+Z)\times X \arrow[d, "h\times 1_X"] & Z\times X \arrow[ld, "\overline{\iota_2}\times 1_X"] \arrow[l, "\iota_Z\times 1_X"'] \\
+                                                                                                        & D^X\times X \arrow[d, "{\ev{X,D}}"]    &                                                                                      \\
+                                                                                                        & D                                      &                                                                                     
+                    \end{tikzcd}
+            \end{center}
+            commutes and it follows that $(Y+Z)\times X$ is the coproduct of $Y\times X$ and $Z\times X$.
+            Thus $Y\times X+Z\times X\cong (Y+Z)\times X$
+    \end{proof}
+    \item\begin{proof}
+        Note that $Y^Z\times Y^X(Z+X)\cong Y^X\times Y^Z\times Z+Y^Z\times Y^X\times X$ and let $f\colon Y^Z\times Y^X(Z+X)\to Y$ be given by the composition
+        \begin{multline*}
+            Y^X\times Y^Z\times Z+Y^Z\times Y^X\times X\xrightarrow{1_{Y^X}\times\ev{Z,Y}+1_{Y^Z}\times\ev{X,Y}}\\
+            Y^X\times Y+Y^Z\times Y\cong (Y^X+Y^Z)\times Y\xrightarrow{\pi_Y} Y.
+        \end{multline*}
+        Let $h\colon A\times(Z+X)\to Y$ be any morphism. 
+        Since $A\times (Z+X)\cong A\times Z+A\times X$ we have unique maps $H_Z\colon A\to Y^Z$ and $H_X\colon A\to Y^X$ such that 
+        \begin{center}
+            \begin{tikzcd}
+                Y^Z\times Z \arrow[r, "{\ev{Z,Y}}"] & Y                                                                       & Y^X\times X \arrow[r, "{\ev{X,Y}}"] & Y                                                                      \\
+                                                    & A\times Z \arrow[lu, "H_Z\times 1_Z"] \arrow[u, "\iota_{A\times Z} h"'] &                                     & A\times X \arrow[lu, "H_X\times 1_X"] \arrow[u, "\iota_{A\times X}h"']
+            \end{tikzcd}
+        \end{center}
+        commute, where 
+        \begin{tikzcd}
+            A\times Z \arrow[r, "\iota_{A\times Z}"] & A\times Z+A\times X & A\times X \arrow[l, "\iota_{A\times X}"']
+        \end{tikzcd}
+        are the inclusion maps. 
+        Let $H=(H_{Z},H_{X})\colon A\to Y^Z\times Y^X$. Since
+        \[ \pi_Y\circ (1_{Y^X}\times\ev{Z,Y})\circ (H\times 1_Z)=\pi_Y\circ H_X\times(\ev{Z, Y}\circ H_Z\times 1_Z)=\iota_{A\times Z}h \]
+        and similarly $\pi_Y\circ (1_{Y^Z}\times\ev{X,Y})\circ (H\times 1_X)=\iota_{A\times X} h$, it follows that
+        \begin{align*}
+            h&=\iota_{A\times Z}h+\iota_{A\times X}h\\
+            &= \pi_Y\circ (1_{Y^X}\times\ev{Z,Y})\circ (H\times 1_Z)+\pi_Y\circ (1_{Y^Z}\times\ev{X,Y})\circ (H\times 1_X)\\
+            &=f\circ (H\times 1_Z+H\times 1_X)\\
+            &=f\circ (H\times 1_{Z+X}).
+        \end{align*}
+        Hence,
+        \begin{tikzcd}
+            Y^X\times Y^Z\times (Z+X) \arrow[r, "f"] & Y                                                           \\
+                                                     & A\times (Z+X) \arrow[u, "h"'] \arrow[lu, "H\times 1_{Z+X}"]
+        \end{tikzcd}
+        commutes and so $Y^{Z+X}\cong Y^Z\times Y^X$.
+    \end{proof}
+   \end{exercises}
+\end{solution}
+
+\begin{exercise}{49}
+    In a ccc, prove that the transpose of a composite $Z\xrightarrow{g}W\xrightarrow{f}Y^X$ is 
+    \[ Z\times X\xrightarrow{g\times 1_X}W\times X\xrightarrow{\bar{f}}Y, \]
+    if $\bar{f}$ is the transpose of $f$.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        We need to find a morphism $\overline{fg}\colon Z\times X\to Y$ such that $\ev{X,Y}\circ (f\circ g\times 1_X) = \overline{fg}$.
+        Well, 
+        \[ \ev{X,Y}\circ (f\circ g\times 1_X)=\ev{X,Y}\circ(f\times 1_X)\circ (g\times 1_X)=\bar{f}\circ (g\times 1_X), \]
+        so we're done.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{50}
+    Suppose $\Ccal, \Dcal, \Ecal$ are categories, such that
+    \begin{enumerate}
+        \item For each pair of objects $(C,D)\in\ob(\Ccal\times \Dcal)$, an object $F_0(C,D)$ in $\Ecal$;
+        \item For each object $C\in\ob\Ccal$, a functor $F_C\colon\Dcal\to\Ecal$ satisfying $F_C(D)=F_0(C,D)$ for each $D\in\ob\Dcal$;
+        \item For each object $D\in\ob\Dcal$, a functor $F_D\colon\Ccal\to\Ecal$ satisfying $F_D(C)=F_0(C,D)$ for each object $C\in\Dcal$;
+    \end{enumerate}
+    such that for each pair of morphism $f\colon C\to C'$ in $\Ccal$ and $g\colon D\to D'$ in $\Dcal$ we have a commuting square
+    \begin{center}
+        \begin{tikzcd}
+            {F_0(C, D)} \arrow[r, "F_D(f)"] \arrow[d, "F_C(g)"] & {F_0(C', D)} \arrow[d, "F_{C'}(g)"] \\
+            {F_0(C, D')} \arrow[r, "F_{D'}(f)"]                 & {F_0(C', D')}                      
+        \end{tikzcd}
+    \end{center}
+    in $\Ecal$. 
+
+    Show that there is a unique functor $F\colon\Ccal\times\Dcal\to\Ecal$ whose operation on objects in $F_0$, while $F(1_C,g)=F_C(g)$ and $F(f,1_D)=F_D(f)$.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        For $f\colon C\to C'$ in $\Ccal$ and $g\colon D\to D'$ in $\Dcal$ we define $F(f,g)\colon F_0(C,D)\to F_0(C',D')$ to be any composition around the commuting square
+        \begin{center}
+            \begin{tikzcd}
+                {F_0(C, D)} \arrow[r, "F_D(f)"] \arrow[d, "F_C(g)"] & {F_0(C', D)} \arrow[d, "F_{C'}(g)"] \\
+                {F_0(C, D')} \arrow[r, "F_{D'}(f)"]                 & {F_0(C', D')}
+            \end{tikzcd}.
+        \end{center}
+        This is easily checked to give a functor $F\colon\Ccal\times\Dcal\to\Ecal$.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{51}
+    An object $Y$ in a category with finite product is called \textit{exponentiating} if the exponential $X^Y$ exists for each $Y\in\ob\Ccal$.
+    Show that if $X$ is exponentiating, the assignment $Y\mapsto X^Y$ is the object part of a functor $\Ccal^\op\to\Ccal$.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        For $f\colon Y\to Z$, we define $X^f\colon X^Z\to X^Y$ to be the unique map which makes
+        \begin{center}
+            \begin{tikzcd}
+                X^Y\times Y \arrow[rr, "{\ev{Y,X}}"]                                   &                                       & X \\
+                                                                                       & X^Z\times Z \arrow[ru, "{\ev{Z,X}}"'] &   \\
+                X^Z\times Y \arrow[uu, "X^f\times 1_Y"] \arrow[ru, "1_{X^Z}\times f"'] &                                       &  
+            \end{tikzcd}
+        \end{center}
+        commute.
+        From uniqueness, we get that $X^{1_Y}=1_{X^Y}$ and for $X^{gf}=X^fX^g$ for $Y\xrightarrow{f} Z\xrightarrow{g} W$.
+        Hence, $X^{(-)}\colon\Ccal^\op\to\Ccal$ is a functor.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{52}
+    Show that for every cartesian closed category $\Ccal$ there is a functor $\Ccal^\op\times\Ccal\to\Ccal$, assigning $Y^X$ to $(X,Y)$.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Checking the conditions of \ref{ex:50}:
+        \begin{enumerate}
+            \item for each object $(X,Y)$ in $\Ccal^\op\times\Ccal$ we have the object $Y^X$ in $\Ccal$;
+            \item for each $X\in\ob\Ccal^\op$ we have the functor $(-)^X\colon\Ccal\to\Ccal$;
+            \item for each $Y\in\ob\Ccal^\op$ we have the functor $Y^{(-)}\colon\Ccal^\op\to\Ccal$.
+        \end{enumerate}
+        It is left to show that for any $f\colon X_2\to X_1$ and $g\colon Y_1\to Y_2$ in $\Ccal$,
+        \begin{center}
+            \begin{tikzcd}
+                Y_1^{X_1} \arrow[r, "Y_1^f"] \arrow[d, "g^{X_1}"] & Y_1^{X_2} \arrow[d, "g^{X_2}"] \\
+                Y_2^{X_1} \arrow[r, "Y_2^f"]                      & Y_2^{X_2}                     
+                \end{tikzcd}
+        \end{center}
+        commutes\footnote{
+            In $\Set$, $Y^X=\Hom(X,Y)$ so the functor acts functions by sending $h\colon X_1\to Y_1$ to $ghf\colon X_2\to Y_2$. 
+            Thus, the commutativity of the diagram is equivalent to function composition being associative.
+        }. Since
+        \begin{center}
+            \begin{tikzcd}
+                Y_1^{X_1}\times X_2 \arrow[r, "Y_1^f\times 1_{X_2}"] \arrow[d, "1_{Y_1^{X_1}}\times f"] & Y_1^{X_2}\times X_2 \arrow[r, "g^{X_2}\times 1_{X_2}"] \arrow[d, "{\ev{X_2,Y_1}}"] & Y_2^{X_2}\times X_2 \arrow[d, "{\ev{X_2,Y_2}}"] \\
+                Y_1^{X_1}\times X_1 \arrow[r, "{\ev{X_1,Y_1}}"']                                        & Y_1 \arrow[r, "g"']                                                                & Y_2                                            
+            \end{tikzcd}
+        \end{center}
+        commutes\footnote{
+            left square commutes by definition of $Y_1^f$, right square commutes by definition of $g^{X_2}$
+        }, we have that
+        \[ \ev{X_2,Y_2}(g^{X_2}Y_1^f\times 1_{X_2})=g\ev{X_2,Y_1}(Y_1^f\times 1_{X_2})=g\ev{X_1,Y_1}(1_{Y_1^{X_1}}\times f),\]
+        and since
+        \begin{center}
+            \begin{tikzcd}
+                Y_2^{X_2}\times X_2 \arrow[rr, "{\ev{X_2,Y_2}}"]                                            &  & Y_2                                                                                  &                     \\
+                Y_2^{X_1}\times X_2 \arrow[rr, "1_{Y_2^{X_1}}\times f"] \arrow[u, "Y_2^f\times 1_{X_2}"]    &  & Y_2^{X_1}\times X_1 \arrow[u, "{\ev{X_1,Y_2}}"]                                      & Y_1 \arrow[lu, "g"] \\
+                Y_1^{X_1}\times X_2 \arrow[rr, "1_{Y_1^{X_1}}\times f"'] \arrow[u, "g^{X_1}\times 1_{X_2}"] &  & Y_1^{X_1}\times X_1 \arrow[ru, "{\ev{X_1,Y_1}}"'] \arrow[u, "g^{X_1}\times 1_{X_1}"] &                    
+            \end{tikzcd}
+        \end{center}
+        commutes\footnote{
+            top square commutes by definition of $Y_2^f$, bottom square commutes because $-\times -\colon\Ccal\times\Ccal\to\Ccal$ is a bifunctor and  the right triangle commutes by definition of $g^{X_1}$
+        }, then
+        \[ \ev{X_2,Y_2}(Y_2^f g^{X_1}\times 1_{X_2})=\ev{X_1,Y_2}(1_{Y_2^{X_1}}\times f)(g^{X_1}\times 1_{X_1})=g\ev{X_1,Y_1}(1_{Y_1^{X_1}}\times f).\]
+        Hence, both $Y_2^fg^{X_1}$ and $g^{X_2}Y_1^f$ make
+        \begin{center}
+            \begin{tikzcd}
+                Y_2^{X_2}\times X_2 \arrow[r, "{\ev{X_2,Y_2}}"]                                      & Y_2                                               \\
+                Y_1^{X_1}\times X_2 \arrow[u, "-\times 1_{X_2}"] \arrow[r, "1_{Y_1^{X_1}}\times f"'] & Y_1^{X_1}\times X_1 \arrow[u, "{g\ev{X_1,Y_1}}"']
+            \end{tikzcd}
+        \end{center}
+        commute, and so by the universal property of $Y_2^{X_2}$ they are equal.
+        
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{53}
+    Let $A$ be the unique function making  
+    \begin{center}
+        \begin{tikzcd}
+            1 \arrow[r, "0"] \arrow[rd, "1_\Nbb"'] & \Nbb \arrow[d, "A"] \arrow[r, "S"] & \Nbb \arrow[d, "A"] \\
+                                              & \Nbb^\Nbb \arrow[r, "S^\Nbb"]      & \Nbb^\Nbb          
+        \end{tikzcd}
+    \end{center}
+    commute. Show that the addition function is represented by the transpose of $A$. 
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Let $a\colon\Nbb\times\Nbb\to\Nbb$ be the unique map such that
+        \begin{center}
+            \begin{tikzcd}
+                \Nbb^\Nbb\times\Nbb \arrow[r, "{\ev{\Nbb,\Nbb}}"]           & \Nbb \\
+                \Nbb\times\Nbb \arrow[ru, "a"'] \arrow[u, "A\times 1_\Nbb"] &     
+            \end{tikzcd}
+        \end{center}
+        commutes. 
+        Then for $m,n\in\Nbb$ we have that $a(0, n)=\ev{\Nbb,\Nbb}(A\times 1_\Nbb)(0,n)=A(0)(n)=n$ and $a(Sn,m)=A(Sn)(m)=$
+
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{54}
+    
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        
+    \end{proof}
+\end{solution}

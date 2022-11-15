@@ -1,0 +1,38 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Categories}{2}{section.1}%
+\contentsline {section}{\numberline {2}Functors and Constructions on Categories}{2}{section.2}%
+\contentsline {section}{\numberline {3}Natural Transformations and Equivalences}{2}{section.3}%
+\contentsline {section}{\numberline {4}Limits and Colimits}{2}{section.4}%
+\contentsline {subsection}{Exercise 21}{2}{subsection*.1}%
+\contentsline {subsection}{Exercise 22}{2}{subsection*.2}%
+\contentsline {subsection}{Exercise 23}{3}{subsection*.3}%
+\contentsline {subsection}{Exercise 24}{3}{subsection*.4}%
+\contentsline {subsection}{Exercise 25}{3}{subsection*.5}%
+\contentsline {subsection}{Exercise 26}{4}{subsection*.6}%
+\contentsline {subsection}{Exercise 27}{4}{subsection*.7}%
+\contentsline {subsection}{Exercise 28}{4}{subsection*.8}%
+\contentsline {subsection}{Exercise 29}{4}{subsection*.9}%
+\contentsline {subsection}{Exercise 30}{5}{subsection*.10}%
+\contentsline {section}{\numberline {5}Complete Categories}{5}{section.5}%
+\contentsline {subsection}{Exercise 42}{5}{subsection*.11}%
+\contentsline {subsection}{Exercise 43}{5}{subsection*.12}%
+\contentsline {subsection}{Exercise 44}{5}{subsection*.13}%
+\contentsline {subsection}{Exercise 45}{6}{subsection*.14}%
+\contentsline {subsection}{Exercise 46}{6}{subsection*.15}%
+\contentsline {section}{\numberline {6}Cartesian Closed Categories}{7}{section.6}%
+\contentsline {subsection}{Exercise 47}{7}{subsection*.16}%
+\contentsline {subsection}{Exercise 48}{10}{subsection*.17}%
+\contentsline {subsection}{Exercise 49}{12}{subsection*.18}%
+\contentsline {subsection}{Exercise 50}{12}{subsection*.19}%
+\contentsline {subsection}{Exercise 51}{13}{subsection*.20}%
+\contentsline {subsection}{Exercise 52}{13}{subsection*.21}%
+\contentsline {subsection}{Exercise 53}{15}{subsection*.22}%
+\contentsline {subsection}{Exercise 54}{15}{subsection*.23}%
+\contentsline {section}{\numberline {7}Presheaves}{15}{section.7}%
+\contentsline {subsection}{Exercise 55}{15}{subsection*.24}%
+\contentsline {subsection}{Exercise 8.1}{16}{subsection*.25}%
+\contentsline {subsection}{Exercise 56}{17}{subsection*.26}%
+\contentsline {subsection}{Exercise 57}{17}{subsection*.27}%
+\contentsline {subsection}{Exercise 58}{19}{subsection*.28}%
+\contentsline {subsection}{Exercise 8.3}{20}{subsection*.29}%
+\contentsfinish 

@@ -1,0 +1,88 @@
+\section{Complete Categories}
+
+\begin{exercise}{42}
+    Take one of your favourite categories ($\Top, \Pos, \Rng, \Mon, \Grp, \Grph, \Cat$) and show that it is both complete and cocomplete.
+\end{exercise}
+\begin{solution}
+    Consider $\Grp$. 
+    By Proposition 5.1, it is enough to prove that $\Grp$ has all small products and equalizers.
+    The equalizer of $f,g\colon G\rightrightarrows  H$ is the pair $(G', i)$ where $G'=\{a\in G\mid f(a)=g(a)\}$ and $i$ is the inclusion map.
+    Note the $G'$ is a group since $f$ and $g$ are group homomorphisms.
+    For a set of groups $\{G_i\}_{i\in I}$, the product $\prod_{i\in I} G_i$ has a group structure by performing the group operations pointwise.
+\end{solution}
+
+\begin{exercise}{43}
+    Show that if $\Ccal$ is complete, then $F\colon\Ccal\to\Dcal$ preserves all limits if $F$ preserves products and equalizers.
+    This no longer holds if $\Ccal$ is not complete: $F$ may preserve all products and equalizers which exists in $\Ccal$, yet not preserve all limits which exists in $\Ccal$.
+\end{exercise}
+\begin{solution}
+    I assume the question means \textit{small} limits, since I don't think this holds for all limits.
+    \begin{proof}
+        Suppose $\Ccal$ is complete and $F\colon\Ccal\to\Dcal$ preserves products and equalizers.
+        Let $G\colon\Ical\to\Ccal$ be a small diagram. Then $\lim_\Ical G$ can be expressed as
+       \begin{center}
+            \begin{tikzcd}
+                \lim_\Ical G \arrow[r] & \prod_{i\in\ob\Ical} Gi \arrow[r, "c", shift left] \arrow[r, "d"', shift right] & \prod_{f\in\mor\Ical} G(\cod f),
+            \end{tikzcd}
+       \end{center}
+       and since $F$ preserves equalizers and products, $F(\lim_\Ical G)=\lim_\Ical (FG)$.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{44}
+    Suppose a category $\Ccal$ has limits of shape $\Ical$. Show that the operation which assigns each diagram $\Ical\to\Ccal$ to its limit in $\Ccal$ is part of a functor $F\colon[\Ical, \Ccal]\to\Ccal$. 
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Let $\eta\colon G\Rightarrow H$ be a morphism in $[\Ical, \Ccal]$, $\mu\colon\Delta_{FG}\Rightarrow G$, $\varepsilon\colon\Delta_{FH}\Rightarrow H$ and $f\colon C\to C'$ a morphism in $\Ical$.
+        This is summarized in the following diagram
+        \begin{center}
+            \begin{tikzcd}
+                & FG \arrow[ld, "\mu_C"'] \arrow[rd, "\mu_{C'}"] &                                          &                     & FH \arrow[ld, "\varepsilon_C"'] \arrow[rd, "\varepsilon_{C'}"] &     \\
+                GC \arrow[rr, "Gf"] \arrow[rrr, "\eta_C", bend right] &                                                & GC' \arrow[rrr, "\eta_{C'}", bend right] & HC \arrow[rr, "Hf"] &                                                                & HC'
+            \end{tikzcd}.
+        \end{center}
+        Note also that the diagram commutes. Thus, $(FG,\eta\mu)$ is a cone for the diagram $H$, so there is a unique morphism $g\colon FG\to FH$ such that $\varepsilon\Delta_g=\eta\mu$. We define $F\eta\defeq g$.
+        It is straightforward to verify that the uniqueness of $g$ turns $F$ into a functor.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{45}
+    Let $\Ccal, \Dcal$ and $\Ecal$ be categories. Show that the following categories are isomorphic:
+    \[ [\Ecal, [\Ccal, \Dcal]]\cong [\Ecal\times\Ccal, \Dcal]\cong [\Ccal, [\Ecal, \Dcal]]. \]
+    Use this and the previous exercise to give a more elegant proof of Theorem 4.5.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Consider the functors $[\Ecal, [\Ccal, \Dcal]]\xrightarrow{F_1} [\Ecal\times\Ccal, \Dcal]\xrightarrow{F_2}[\Ccal, [\Ecal, \Dcal]]$ given by
+        \begin{itemize}
+            \item On objects: for $G\colon\Ecal\to [\Ccal, \Dcal]$, $H\colon\Ecal\times\Ccal\to\Dcal$, $f\colon E\to E'$ in $\Ecal$ and $g\colon C\to C'$ in $\Ccal$ we have 
+                \begin{align*}
+                    &F_1(G)(E, C)= G(E)(C)\\
+                    &F_1(G)(f,g)=(G(E')(g))(G f)_C\\
+                    &F_2(H)(C)(E)=H(E,C)\\
+                    &F_2(H)(C)(f)=H(f,\id_C)\\
+                    &(F_2(H)(g))_E= H(\id_E, f).
+                \end{align*}
+            \item On morphisms: for $G_1,G_2\colon\Ecal\rightrightarrows [\Ccal, \Dcal], H_1,H_2\colon\Ecal\times\Ccal\rightrightarrows\Dcal, \eta\colon G_1\Rightarrow G_2$ and $\varepsilon\colon H_1\Rightarrow H_2$ we have $(F_1\eta)_{(E,C)} = (\eta_E)_C$ and
+            $((F_2\varepsilon)_C)_E=\varepsilon_{(E,C)}.$
+        \end{itemize}
+        Since these functors are clearly invertible, they are isomorphisms of categories.
+
+
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{46}
+    Show that a full and faithful functor reflects the property of being a terminal (or initial) object. 
+    Deduce that equivalences preserve the terminal (or initial) object.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        Let $F\colon\Ccal\to\Dcal$ be a fully faithful functor and $X\in\ob\Ccal$ such that $FX$ is terminal and take any $Y\in\ob\Ccal$.
+        Then $\Hom_\Ccal(Y, X)\cong\Hom_\Dcal(FY, FX)\cong\{*\}$, so $X$ is terminal in $\Ccal$. 
+        Similarly, we show that fully faithful functors reflect the property of being initial.
+
+        Hence, if $F$ is an equivalence, $X\in\ob C$ is terminal, $Z\in\ob\Dcal$ is any object and $Y\in\ob\Ccal$ is chosen such that $FY\cong Z$ we have that $\{*\}=\Hom_\Ccal(Y,X)\cong\Hom_\Dcal(FY, FX)\cong\Hom_\Dcal(Z,FX)$ so $FX$ is terminal in $\Dcal$.
+    \end{proof}
+\end{solution}

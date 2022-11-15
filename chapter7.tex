@@ -1,0 +1,227 @@
+\section{Presheaves}
+
+\begin{exercise}{55}
+    Suppose object $A$ and $B$ are such that for every object $X$ in $\Ccal$ there is a bijection $f_X\colon\Ccal(A,X)\to\Ccal(B,X)$, naturally in a sense you define yourself. 
+    Conclude that $A$ and $B$ are isomorphic.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        The assumption is equivalent to $f\colon\Ccal(A,-)\Rightarrow\Ccal(B,-)$ being a natural isomorphism of functors $\Ccal\to\Set$, i.e. an isomorphism in $\expob{\Ccal}{\Set}$.
+        
+        Let $F\colon\Ccal^\op\to\expob{\Set}{\Ccal}$ be the contravariant hom functor, i.e. $FX=\Ccal(X,-)$.        
+        Then the co-Yoneda Lemma states that 
+        \[\expob{\Set}{\Ccal}(FX,FY)=\expob{\Set}{\Ccal}(\Ccal(X,-),\Ccal(Y, -))\cong \Ccal(Y,X)=\Ccal^\op(X,Y)\]
+        so $F$ is fully faithful.
+        Since fully faithful functors reflect isomorphism, it follows that if $FA\cong FB$ via $f$ then there exists an isomorphism $g\colon A\to B$ in $\Ccal^\op$ such that $Fg=f$.
+    \end{proof}
+\end{solution}
+\begin{exercise}{8.1}
+    Let $\Ccal$ be a category and $F$ a presheaf on $\Ccal$. 
+    Show that $F$ is representable if and only if there are $C$ in $\Ccal$ and $x\in F(C)$ such that for any $D$ in $\Ccal$ and $y\in F(D)$ there exists a unique map $\alpha\colon D\to C$ such that $y=x\cdot_F\alpha\defeq F(\alpha)(x)$.
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        $(\Rightarrow)$ If $F$ is representable then there exists $C$ in $\Ccal$ and a natural isomorphism $\eta\colon\Ccal(-,C)\Rightarrow F$.
+        Let $x=\eta_C(1_C)\in FC$. For $D\in\ob\Ccal$ and $y\in FD$, we have that $\Ccal(D,C)\cong FD$ via $\eta_D$ so let $\alpha=\eta_D^{-1}(y)$.
+        By commutativity of
+        \begin{center}
+            \begin{tikzcd}
+                {\Ccal(C,C)} \arrow[d, "\eta_C"] \arrow[r, "-\circ\alpha"] & {\Ccal(D,C)} \arrow[d, "\eta_D"] \\
+                FC \arrow[r, "F\alpha"]                                         & FD                                   
+            \end{tikzcd}
+        \end{center}
+        it follows that $y=\eta_D(\alpha)=\eta_D(1_C\alpha)=F(\alpha)(\eta_C(1_C))=F(\alpha)(x)$.
+
+        $(\Leftarrow)$ Define $\eta\colon\Ccal(-,C)\Rightarrow F$ by $\eta_C(1_C)=x$.
+        Requiring $\eta$ to be a natural transformation means that
+        \begin{center}
+            \begin{tikzcd}
+                {\Ccal(C,C)} \arrow[d, "\eta_C"] \arrow[r, "-\circ\beta"] & {\Ccal(D,C)} \arrow[d, "\eta_D"] \\
+                FC \arrow[r, "F\beta"]                                         & FD                                   
+            \end{tikzcd}
+        \end{center}
+        commutes for all $D\in\ob\Ccal$ and $\beta\colon D\to C$. In other words, $\eta_D(\beta)=F(\beta)(x)$ for all $D\in\ob\Ccal$ and $\beta\colon D\to C$.
+        We claim that $\eta$ is a natural isomorphism. 
+        Indeed, for any $\gamma\colon D\to D'$ and $\beta\colon D'\to C$ we have that $F(\gamma)\eta_{D'}(\beta)=F(\gamma)F(\beta)(x)=F(\beta\gamma)(x)=\eta_D(\beta\gamma)$ so that
+        \begin{center}
+            \begin{tikzcd}
+                {\Ccal(D',C)} \arrow[d, "\eta_{D'}"] \arrow[r, "-\circ\gamma"] & {\Ccal(D,C)} \arrow[d, "\eta_D"] \\
+                FC \arrow[r, "F\gamma"]                                             & FD                                   
+            \end{tikzcd}
+        \end{center}
+        commutes. The assumption that for each $y\in FD$ there is a unique $\alpha\in\Ccal(D,C)$ such that $y=F(\alpha)(x)=\eta_D(\alpha)$ implies that $\eta_D$ is a bijection for all $D\in\ob\Ccal$.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{56}
+    Show that the following are equivalent for each small category $\Ccal$:
+    \begin{equivalent}
+        \item $\Ccal$ has a terminal object 1.
+        \item The terminal object in $\presheaf{\Ccal}$ is representable.
+    \end{equivalent}
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        $(a)\implies (b)$ Since limits in a functor category are computed pointwise, the terminal object of $\presheaf{\Ccal}$ is the functor that sends every object to the one element set and every map to the identity.
+        This functor is certainly isomorphic to $\Ccal(-,1)$.
+
+        $(b)\implies (a)$ Let $\Ccal(-,X)$ be the terminal object of $\presheaf{\Ccal}$. Then for every $Y$ in $\Ccal$, $\Ccal(Y,X)\cong\{*\}$, so there is a unique map $Y\to X$.
+        Thus, $X$ is terminal in $\Ccal$.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{57}
+    Show that the following are equivalent for each small category $\Ccal$:
+    \begin{equivalent}
+        \item $\Ccal$ has binary products.
+        \item For each pair of object $A$ and $B$ in $\Ccal$ the presheaf $yA\times yB$ is representable in $\presheaf{\Ccal}$.
+    \end{equivalent}
+    Can you generalize the statement in this and \ref{ex:56} to general limits?
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        $(a)\implies (b)$ Let $A,B$ be objects of $\Ccal$. Note that for all $C\in\ob\Ccal$ we have an isomorphism $\Ccal(C,A)\times \Ccal(C,B)\cong \Ccal(C, A\times B)$ in $\Set$ given by sending $(f_1,f_2)$ to the unique map which makes 
+        \begin{tikzcd}
+            & C \arrow[ld, "f_1"'] \arrow[rd, "f_2"] \arrow[d, dashed] &   \\
+          A & A\times B \arrow[l, "\pi_A"] \arrow[r, "\pi_B"']         & B
+        \end{tikzcd}
+        commute. Its inverse is given by sending $f\colon C\to A\times B$ to $(\pi_A f,\pi_B f)$. 
+        If $g\colon C'\to C, f_1\colon C\to A$ and $f_2\colon C\to B$ are morphisms in $\Ccal$, since there is a unique map which makes
+        \begin{tikzcd}
+            & C' \arrow[ld, "f_1g"'] \arrow[rd, "f_2g"] \arrow[d, dashed] &   \\
+          A & A\times B \arrow[l, "\pi_A"] \arrow[r, "\pi_B"']            & B
+        \end{tikzcd}
+        commute, so 
+        \begin{tikzcd}
+            {\Ccal(C,A)\times\Ccal(C,A)} \arrow[d, "-\circ g"] \arrow[r] & {\Ccal(C,A\times B)} \arrow[d, "-\circ g"] \\
+            {\Ccal(C',A)\times \Ccal(C',B)} \arrow[r]                    & {\Ccal(C',A\times B)}                     
+        \end{tikzcd}
+        commutes. Hence, the isomorphism is natural in $C$.
+
+        $(b)\implies (a)$ For $A, B\in\ob\Ccal$ take $C\in\ob\Ccal$ such that there exists a natural isomorphism $\eta\colon\Ccal(-,A)\times\Ccal(-, B)\Rightarrow\Ccal(-,C)$.
+        We claim that $\Ccal$ is the product. Let $(\pi_A,\pi_B)=\eta_C^{-1}(\id_C)$. 
+        Then for any $f_1\colon X\to A$ and $f_2\colon X\to B$ in $\Ccal$, we have that 
+        \begin{multline*}
+            \eta_X(\pi_A\eta_X(f_1,f_2), \pi_B\eta_X(f_1,f_2))\stackrel{*}{=}\eta_C(\pi_A,\pi_B)\circ\eta_X(f_1,f_2)\\=\id_C\circ\eta_X(f_1,f_2)=\eta_X(f_1,f_2),
+        \end{multline*}
+        where $(*)$ holds since $\eta$ is a natural transformation. Since $\eta_X$ is an isomorphism,
+        \begin{center}
+            \begin{tikzcd}
+                &  & X \arrow[lld, "f_1"'] \arrow[d, "{\eta_X(f_1,f_2)}" description] \arrow[rrd, "f_2"] &  &   \\
+              A &  & C \arrow[ll, "\pi_A"] \arrow[rr, "\pi_B"']                                          &  & B
+            \end{tikzcd}
+        \end{center}
+          commutes. 
+          Since $\eta_X(f_1,f_2)$ is the unique map which makes this diagram commute, $C$ is the product of $A$ and $B$.
+    \end{proof}
+
+    The generalization of this and \ref{ex:56} would be
+    \begin{proposition}\label{prop:rep-lim}
+        For $F\colon\Ical\to\Ccal$, $\lim F$ exists in $\Ccal$ if and only $\lim yF$ is representable, where $y\colon\Ccal\to\presheaf\Ccal$ is the Yoneda embedding.
+    \end{proposition}
+    Firs, we prove an important lemma.
+    \begin{lemma}\label{lemma:hom-prev-lim}
+        Let $\Ccal$ be a small category. The hom functor $\Ccal(-,-)\colon\Ccal^\op\times\Ccal\to\Set$ preserves limits.
+    \end{lemma}
+    \begin{proof}
+        Let $F\colon\Ical\to\Ccal$ be a diagram in $\Ccal$ such that $\lim F$ exists.
+        By definition of limiting cones, we have a natural bijection $\eta\colon\Ccal^\Ical(\Delta_{(-)},F)\Rightarrow \Ccal(-,\lim F)$
+        sending a natural transformation $\theta\colon\Delta_Y\Rightarrow F$ to the unique map $Y\to\lim F$ such that
+        \begin{tikzcd}
+            & Y \arrow[ld, "\theta_i"'] \arrow[d, "\eta_Y(\theta)"] \arrow[rd, "\theta_j"] &     \\
+        F_i & \lim_i F_i \arrow[l] \arrow[r]                                               & F_j
+        \end{tikzcd}
+        commutes.
+        Naturality follows from the fact that
+        \begin{center}
+            \begin{tikzcd}
+                & Y' \arrow[ldd, "(\theta\Delta_g)_i"', bend right] \arrow[rdd, "(\theta\Delta_g)_j", bend left] \arrow[d, "g"] &     \\
+                & Y \arrow[ld, "\theta_i"'] \arrow[rd, "\theta_j"] \arrow[d, "\eta_Y(\theta)"]                                  &     \\
+            F_i & \lim_i F_i \arrow[l] \arrow[r]                                                                 & F_j
+            \end{tikzcd}
+        \end{center}
+        commutes and the uniqueness of $\eta_{Y'}(\theta\Delta_g)$. 
+        Hence, it remains to show that we have a natural bijection $\lim_i\Ccal(-, F_i)\cong \Ccal^\Ical(\Delta_{(-)}, F)$.
+        We define $\mu\colon\Ccal^\Ical(\Delta_{(-)}, F)\Rightarrow\lim_i\Ccal(-,F_i)$ by sending a natural transformation $\theta\colon\Delta_Y\to F$ to $g(*)$ where $g$ is the unique map such that
+        \begin{center}
+            \begin{tikzcd}
+                & * \arrow[d, "g"] \arrow[ldd, "\const_{\theta_j}"', bend right] \arrow[rdd, "\const_{\theta_j}", bend left] &                \\
+                & {\lim_i\Ccal(Y,F_i)} \arrow[ld] \arrow[rd]                                                                 &                \\
+                {\Ccal(Y,F_i)} \arrow[rr] &                                                                                                            & {\Ccal(Y,F_j)}
+            \end{tikzcd}
+        \end{center}
+        commutes. This defines a bijection since for every element element $x$ in $\lim_i\Ccal(Y, F_i)$ we can assign a natural transformation $\theta\colon\Delta_Y\Rightarrow F$ by defining $\theta_i$ to be the image of $x$ under the map $\lim_i\Ccal(Y, F_i)\to\Ccal(Y, F_i)$.
+        Naturality of $\theta$ follows from the commutativity of
+        \begin{tikzcd}
+                    & {\lim_i\Ccal(Y,F_i)} \arrow[ld] \arrow[rd] &                \\
+        {\Ccal(Y,F_i)} \arrow[rr] &                                            & {\Ccal(Y,F_j)}
+        \end{tikzcd}.
+        To prove naturality in $Y$, let $f\colon Y'\to Y$ in $\Ccal$ and $f^*\colon\lim_i\Ccal(Y, F_i)\to \lim_i\Ccal(Y', F_i)$ be the map induced by $f$.
+        Then
+        \begin{center}
+            \begin{tikzcd}
+                & {\lim_i\Ccal(Y, F_i)} \arrow[rrd, "f^*"] \arrow[ld, "g_i"'] \arrow[rd, "g_j"] &                                          &                                                               &                  \\
+                {\Ccal(Y, F_i)} \arrow[rr] \arrow[rrd, "-\circ f"'] &                                                                               & {\Ccal(Y, F_j)} \arrow[rrd, "-\circ f"'] & {\lim_i\Ccal(Y', F_i)} \arrow[rd, "g_j'"] \arrow[ld, "g_i'"', crossing over] &                  \\
+                            &                                                                               & {\Ccal(Y', F_i)} \arrow[rr]              &                                                               & {\Ccal(Y', F_j)}
+            \end{tikzcd}
+        \end{center}
+        commutes, and for $\theta\colon\Delta_Y\Rightarrow F$ we have that
+        \[ g_i'\mu_{Y'}(\theta\Delta_f)=(\theta\Delta f)_i=\theta_i f =g_i\mu_Y(\theta)f = g_i'f^*\mu_Y(\theta) \]
+        We conclude that $\Ccal(-,\lim_i F_i)\cong\lim_i\Ccal(-, F_i)$.
+
+        Since the hom functor is contravariant is the first compoenent, we need to show that $\Ccal(\colim_i F_i, -)\cong\lim_i\Ccal(F_i, -)$, but this is just the dual of the above paragraph.
+    \end{proof}
+
+    \begin{proof}[Proof of Proposition \ref{prop:rep-lim}]
+        $(\Rightarrow)$ We claim that $\lim_i yF_i\cong\Set(-,\lim_i F_i)$. 
+        Indeed, we have that $(\lim_i yF_i)\cong \lim_i \Set(-,F_i)\cong\Set(-,\lim_i F_i)$,
+        where the last isomorphism follows from Lemma \ref{lemma:hom-prev-lim}.
+
+        $(\Leftarrow)$ Since the Yoneda embedding is fully faithful, it reflects limits, i.e. if $\lim_i yF_i\cong \Set(-,X)$ for some $X\in\ob\Ccal$ then $\lim_i F_i\cong X$.
+    \end{proof}
+\end{solution}
+
+\begin{exercise}{58}
+    Again, let $\Ccal$ be a small category with binary products, and let $A$ and $B$ be objects in $\Ccal$.
+    \begin{exercises}
+        \item Show that the assignment 
+            \[ X\mapsto \Ccal(X\times A, B) \]
+            is part of a functor $\Ccal^\op\to\Set$, with the action on morphisms $f\colon X'\to X$ in $\Ccal$ given by precomposition with $f\times \id_A$.
+        \item What does it say about $\Ccal$ if the functor in part (i) is representable?
+    \end{exercises}
+\end{exercise}
+\begin{solution}
+    \begin{exercises}
+        \item Follows since $\id_X\times\id_A=\id_{X\times A}$ and $fg\times\id_A=(f\times\id_A)(g\times\id_A)$.
+        \item Claim: if we have a natural isomorphism$\eta\colon\Ccal(-\times A,B)\Rightarrow\Ccal(-, C)$ for some $C\in\ob\Ccal$, then $C\cong B^A$.
+            Indeed, for $f\colon X\times A\to B$ we have $\eta_X(f)\colon X\to C$ and since
+            \begin{center}
+                \begin{tikzcd}
+                    {\Ccal(C\times A,B)} \arrow[d, "-\circ\eta_X(f)\times\id_A"'] \arrow[r, "\eta_C"] & {\Ccal(C,C)} \arrow[d, "-\circ\eta_X(f)"] \\
+                    {\Ccal(X\times A,B)} \arrow[r, "\eta_X"]                                          & {\Ccal(X, C)}                            
+                \end{tikzcd}
+            \end{center}
+            commutes, it follows that
+            \[ \eta_X(\eta_C^{-1}(\id_C)\circ \eta_X(f)\times\id_A)=\eta_C(\eta_C^{-1}(\id_C))\circ\eta_X(f)=\eta_X(f),\]
+            so $\eta_C^{-1}(\id_C)\circ \eta_X(f)\times\id_A=f$ by injectivity of $\eta_X$. In particular,
+            \begin{center}
+                \begin{tikzcd}
+                    C\times A \arrow[r, "\eta_C^{-1}(\id_C)"]                    & B \\
+                    X\times A \arrow[u, "\eta_X(f)\times\id_A"] \arrow[ru, "f"'] &  
+                \end{tikzcd}
+            \end{center}
+            commutes. 
+    \end{exercises}
+\end{solution}
+
+\begin{exercise}{8.3}
+    A forest is a poset $(X,\leq)$ such that for any element $x\in X$ the set $\downarrow x=\{y\in X\mid y\leq x\}$ is finite and linearly ordered by $\leq$.
+    If this set has $n+1$ elements, we say that $x$ has depth $n$. Write $\For$ for the category of forests and monotone, depth-preserving maps.
+
+    Show that $\For$ is isomorphic to the category of presheaves on $\Nbb$ (considered as a poset in the usual way).
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        We need to define functors $F\colon\For\to\presheaf\Nbb$ and $G\colon\presheaf\Nbb\to\For$ such that $FG=\id_{\presheaf\Nbb}$ and $GF=\id_{\For}$.
+    \end{proof}
+\end{solution}
