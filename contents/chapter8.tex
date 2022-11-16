@@ -1,1 +1,57 @@
 \section{Presheaves as a Topos}
+
+\begin{exercise}{9.2}
+    Let $\Ccal$ be a category with pullbacks. 
+    \begin{exercises}
+        \item Show that $\Sub(X)$ is a meet semi-lattice for each object $X$ in $\Ccal$.
+        \item Show that if $f\colon Y\to X$ is a morphism in $\Ccal$, then $f^*\colon\Sub(X)\to\Sub(Y)$ is a morphism of meet semi-lattices.
+        \item Show that we have a presheaf
+            \[ \Sub\colon\Ccal^\op\to\Set.\]
+    \end{exercises}
+\end{exercise}
+\begin{solution}
+    \begin{exercises}
+        \item\begin{proof}
+            Consider two monomorphisms $A\xrightarrow{n}X\xleftarrow{m}b$. 
+            Then we can define $n\wedge m$ to be any composition along the pullback square
+            \begin{tikzcd}
+                C \arrow[d] \arrow[r] & B \arrow[d, "m"] \\
+                A \arrow[r, "n"]      & X               
+            \end{tikzcd}, and note that pullbacks of monos are monos (\ref{ex:25}). It is straighforward to verify that this defines a meet operation. 
+            If $\Ccal$ has an initial object, then $\Sub(X)$ has a bottom element. 
+        \end{proof}
+        \item\begin{proof}
+            For $n\colon A\to X$ in $\Sub(X)$, define $f^*(n)$ to be the pullback of $n$ along $f$, i.e.
+            \begin{tikzcd}
+                C \arrow[d, "f^*(n)"'] \arrow[r] & A \arrow[d, "n"] \\
+                Y \arrow[r, "f"]                 & X               
+            \end{tikzcd}. 
+        \end{proof}
+        \item\begin{proof}
+            To show that $\Sub(fg)=\Sub(g)\Sub(f)$ note that we have the commutative diagram
+            \begin{center}
+                \begin{tikzcd}
+                    C \arrow[d, "(fg)^*(n)"'] \arrow[r] & B \arrow[d, "f^*(n)"] \arrow[r] & A \arrow[d, "n"] \\
+                    Z \arrow[r, "g"']                   & Y \arrow[r, "f"']               & X               
+                \end{tikzcd}
+            \end{center}
+            where the right and composite squares are pullbacks, and by \ref{ex:26} it follows that the left square is a pullback, i.e. $(fg)^*(n)=g^*(f^*(n))$.
+            To show that $\Sub(\id_X)=\id_{\Sub(X)}$ observe that 
+            \begin{tikzcd}
+                A \arrow[d, "n"] \arrow[r, "\id_A"] & A \arrow[d, "n"] \\
+                X \arrow[r, "\id_X"']               & X               
+            \end{tikzcd}
+            is a pullback square. 
+        \end{proof}
+    \end{exercises}
+\end{solution}
+
+\begin{exercise}{9.3}
+    Show that in $\Set$ we have for each set $X$ an isomorphism of posets:
+    \[ \Sub(X)\cong(\Pcal(X(,\subseteq))). \]
+\end{exercise}
+\begin{solution}
+    \begin{proof}
+        
+    \end{proof}
+\end{solution}
