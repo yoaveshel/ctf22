@@ -48,10 +48,16 @@
 
 \begin{exercise}{9.3}
     Show that in $\Set$ we have for each set $X$ an isomorphism of posets:
-    \[ \Sub(X)\cong(\Pcal(X(,\subseteq))). \]
+    \[ \Sub(X)\cong(\Pcal(X),\subseteq). \]
 \end{exercise}
 \begin{solution}
     \begin{proof}
-        
+        The isomorphism is given by sending each monomorphisms $n\colon A\to X$ in $\Sub(X)$ to $\im n$ and each subset $A\subseteq X$ to the inclusion map $i_A\colon A\to X$. 
+        This maps are morphisms of posets since for $m\leq n$ we have $m(A)=nk(A)$ so $\im m\subseteq\im n$ and if $A\subseteq B$ then we have the commuting diagram 
+        \begin{tikzcd}
+            A \arrow[d, "i_A"] \arrow[r, "i"] & B \arrow[ld, "i_B"] \\
+            X                                 &                    
+            \end{tikzcd}
+            of inclusion maps, so $i_A\leq i_B$.
     \end{proof}
 \end{solution}
