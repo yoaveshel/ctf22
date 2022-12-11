@@ -1,0 +1,3 @@
+[submodule "latex-config"]
+	path = latex-config
+	url = https://github.com/yoaveshel/latex-config
