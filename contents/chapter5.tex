@@ -19,7 +19,7 @@
     I assume the question means \textit{small} limits, since I don't think this holds for all limits.
     \begin{proof}
         Suppose $\Ccal$ is complete and $F\colon\Ccal\to\Dcal$ preserves products and equalizers.
-        Let $G\colon\Ical\to\Ccal$ be a small diagram. Then $\lim_\Ical G$ can be expressed as
+        Let $G\colon\Ical\to\Ccal$ be a small diagram. Then $\lim_\Ical G$ can be expressed as an equalizer:
        \begin{center}
             \begin{tikzcd}
                 \lim_\Ical G \arrow[r] & \prod_{i\in\ob\Ical} Gi \arrow[r, "c", shift left] \arrow[r, "d"', shift right] & \prod_{f\in\mor\Ical} G(\cod f),
